@@ -25,6 +25,9 @@ pipeline {
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
+
+                    sh git config --global user.email "Jenkins agent"
+                    sh git config --global user.name "Jenkins"
                 }
             }
         }
