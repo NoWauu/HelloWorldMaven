@@ -33,7 +33,7 @@ pipeline {
                     // 2. Create the tag (using the Jenkins Build Number)
                     sh "git tag -a build-${env.BUILD_NUMBER} -m 'Build ${env.BUILD_NUMBER} passed tests'"
 
-                    sh "git push origin build-${env.BUILD_NUMBER}"
+                    sh "git push https://${GIT_AUTH_USR}/${GIT_AUTH_PSW}@github.com/NoWauu/HelloWorld build-${env.BUILD_NUMBER}"
                 }
             }
         }
