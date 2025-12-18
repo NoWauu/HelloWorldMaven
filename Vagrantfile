@@ -2,9 +2,6 @@ Vagrant.configure("2") do |config|
   # Use Ubuntu 22.04
   config.vm.box = "ubuntu/jammy64"
 
-  # Networking: Access the app on your host at http://localhost:8080
-  config.vm.network "forwarded_port", guest: 8080, host: 8080
-
   # Resources: Give the VM 2GB of RAM
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
