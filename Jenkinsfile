@@ -32,8 +32,16 @@ pipeline {
 
                     // 2. Create the tag (using the Jenkins Build Number)
                     sh "git tag -a build-${env.BUILD_NUMBER} -m 'Build ${env.BUILD_NUMBER} passed tests'"
+                }
+            }
+        }
 
-                    sh "git push https://${GIT_AUTH_USR}/${GIT_AUTH_PSW}@github.com/NoWauu/HelloWorld build-${env.BUILD_NUMBER}"
+        stage('Push Tag') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: '0bd096df-9cb8-4ad0-b67a-3e200a31ce45', 
+                                                  passwordVariable: 'GIT_TOKEN', 
+                                                  usernameVariable: 'GIT_USER')]) {
+                    sh "git push https://${GIT_USER}:${GIT_TOKEN}@github.com/your-repo.git v1.${env.BUILD_NUMBER}"
                 }
             }
         }
