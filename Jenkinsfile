@@ -31,7 +31,7 @@ pipeline {
                     sh "git config user.name 'Jenkins CI'"
 
                     // 2. Create the tag (using the Jenkins Build Number)
-                    sh "git tag -a build-${env.BUILD_NUMBER} -m 'Build ${env.BUILD_NUMBER} passed tests'"
+                    sh "git tag -a v1.${env.BUILD_NUMBER} -m 'Build ${env.BUILD_NUMBER} passed tests'"
                 }
             }
         }
